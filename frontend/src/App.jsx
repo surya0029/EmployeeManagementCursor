@@ -5,6 +5,8 @@ import EmployeeCreatePage from './pages/EmployeeCreatePage.jsx'
 import EmployeeEditPage from './pages/EmployeeEditPage.jsx'
 import EmployeeDetailsPage from './pages/EmployeeDetailsPage.jsx'
 
+const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:8080'
+
 export default function App() {
   return (
     <div className="app">
@@ -34,7 +36,7 @@ export default function App() {
 
       <footer className="footer">
         <div className="container footer__inner">
-          <span className="muted">Backend: <code>http://localhost:8080</code></span>
+          <span className="muted">Backend: <code>{API_BASE}</code></span>
           <span className="muted">UI: <code>http://localhost:5173</code></span>
         </div>
       </footer>

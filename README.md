@@ -62,3 +62,24 @@ $env:VITE_API_BASE="http://localhost:8080"
 npm run dev
 ```
 
+## Deploy on Render (backend + frontend)
+
+This repo includes a Render blueprint file: `render.yaml`.
+
+1. Push latest code to GitHub.
+2. In Render, click **New +** -> **Blueprint**.
+3. Connect this repo: [surya0029/EmployeeManagementCursor](https://github.com/surya0029/EmployeeManagementCursor.git).
+4. Render will create:
+   - `employee-management-backend` (Java web service)
+   - `employee-management-frontend` (Static site)
+5. After backend deploy finishes, copy backend URL (example: `https://employee-management-backend.onrender.com`).
+6. Open frontend service settings and set env var:
+   - `VITE_API_BASE` = your backend URL
+7. Open backend service settings and set env var:
+   - `APP_CORS_ALLOWED_ORIGINS` = your frontend URL
+8. Redeploy frontend and backend once after setting env vars.
+
+Notes:
+- Backend uses Render `PORT` automatically via `server.port=${PORT:8080}`.
+- Frontend SPA routing is handled with a rewrite rule in `render.yaml`.
+
